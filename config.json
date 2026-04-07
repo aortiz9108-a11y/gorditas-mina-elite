@@ -1,0 +1,13 @@
+{
+    "carpetas": {
+        "entrada": "/data/data/com.termux/files/home/mandri_data/entrada",
+        "resultados": "/data/data/com.termux/files/home/mandri_data/resultados",
+        "imagenes_local": "/data/data/com.termux/files/home/mandri_data/imagenes_local",
+        "imagenes_menu": "/data/data/com.termux/files/home/mandri_data/imagenes_menu",
+        "servidor_subido": "/data/data/com.termux/files/home/mandri_data/servidor_subido"
+    },
+    "servidor": {
+        "tipo": "local",
+        "puerto": 8080
+    }
+}

@@ -1,0 +1,30 @@
+{
+  "guisos": [
+    {"nombre": "Lengua", "icono": "fa-cow", "especial": "SOLO LUNES"},
+    {"nombre": "Moronga", "icono": "fa-drumstick-bite", "especial": "SOLO MARTES"},
+    {"nombre": "Bistek", "icono": "fa-utensils", "especial": ""},
+    {"nombre": "Picadillo", "icono": "fa-hamburger", "especial": ""},
+    {"nombre": "Deshebrada", "icono": "fa-drumstick", "especial": ""},
+    {"nombre": "Nopales con chile rojo", "icono": "fa-leaf", "especial": ""},
+    {"nombre": "Nopales con huevo", "icono": "fa-leaf", "especial": ""},
+    {"nombre": "Huevo con chile", "icono": "fa-egg", "especial": ""},
+    {"nombre": "Trozo de puerco", "icono": "fa-piggy-bank", "especial": ""},
+    {"nombre": "Rajas", "icono": "fa-pepper-hot", "especial": ""},
+    {"nombre": "Chicharrón", "icono": "fa-bacon", "especial": ""},
+    {"nombre": "Chicharrón con Cuero", "icono": "fa-fire", "especial": "🔥 ESPECIAL 🔥"},
+    {"nombre": "Mole rojo", "icono": "fa-drumstick-bite", "especial": ""},
+    {"nombre": "Mole verde", "icono": "fa-drumstick-bite", "especial": ""},
+    {"nombre": "Frijoles", "icono": "fa-seedling", "especial": ""},
+    {"nombre": "Queso", "icono": "fa-cheese", "especial": ""}
+  ],
+  "bebidas": [
+    {"nombre": "Café", "icono": "fa-mug-hot"},
+    {"nombre": "Agua de Jamaica", "icono": "fa-glass-water"},
+    {"nombre": "Pepsi", "icono": "fa-cuttlefish"},
+    {"nombre": "Jarrito", "icono": "fa-wine-bottle"},
+    {"nombre": "Seven Up", "icono": "fa-glass-cheers"}
+  ],
+  "precio": 18,
+  "horario_gorditas": "Lunes a Jueves 8:30am - 2pm",
+  "horario_pozole": "Sábados desde 4pm"
+}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gorditas Mina de Doña Caro - Sabor que enamora</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #fff5eb 0%, #ffe8d9 100%);
+            color: #2d1b0e;
+        }
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1589301760014-6d6f5f8b5b5b?w=1200');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        .hero h1 { font-size: 4rem; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.5rem; margin-bottom: 2rem; }
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: inline-block;
+            transition: transform 0.3s;
+            margin: 0 10px;
+        }
+        .btn-facebook {
+            background: #1877f2;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: inline-block;
+            transition: transform 0.3s;
+            margin: 0 10px;
+        }
+        .btn-whatsapp:hover, .btn-facebook:hover { transform: scale(1.05); }
+        .precio-destacado {
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            color: white;
+            text-align: center;
+            padding: 40px;
+            margin: -50px 20px 0;
+            border-radius: 20px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .precio-destacado h2 { font-size: 3rem; }
+        .precio-destacado span { font-size: 4rem; font-weight: bold; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #ff6b35; }
+        .ubicacion-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
+        .mapa iframe { width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .galeria-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .galeria-item { overflow: hidden; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .galeria-item:hover { transform: scale(1.03); }
+        .galeria-item img { width: 100%; height: 250px; object-fit: cover; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+        .menu-item { background: white; padding: 20px; text-align: center; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: all 0.3s; }
+        .menu-item:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+        .menu-item h3 { color: #ff6b35; margin-bottom: 10px; }
+        .testimonios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .testimonio { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; }
+        .testimonio p { font-style: italic; margin-bottom: 15px; }
+        .testimonio h4 { color: #ff6b35; }
+        footer { background: #2d1b0e; color: white; text-align: center; padding: 40px; margin-top: 60px; }
+        footer a { color: #ff8c42; text-decoration: none; }
+        .botones-redes { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .ubicacion-grid { grid-template-columns: 1fr; }
+            .section-title { font-size: 1.8rem; }
+            .botones-redes { flex-direction: column; align-items: center; }
+            .btn-whatsapp, .btn-facebook { margin: 5px 0; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div>
+            <h1>🇲🇽 Gorditas Mina de Doña Caro 🇲🇽</h1>
+            <p>Auténticas y caseras • Sabor que enamora en cada mordida</p>
+            <div class="botones-redes">
+                <a href="https://wa.me/524931069671" class="btn-whatsapp">📱 Ordena por WhatsApp</a>
+                <a href="https://www.facebook.com/profile.php?id=61580942190641" class="btn-facebook" target="_blank">👍 Síguenos en Facebook</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="precio-destacado">
+        <h2>🔥 OFERTA ESPECIAL 🔥</h2>
+        <span>$16</span>
+        <p>¡Incluye agua fresca de regalo! 🥤</p>
+        <p style="margin-top: 10px;">Servicio a domicilio 📦</p>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">📍 ¿Dónde encontrarnos?</h2>
+        <div class="ubicacion-grid">
+            <div class="mapa">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.123456!2d-102.876543!3d23.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDA3JzI0LjYiTiAxMDLCsDUyJzM1LjQiVw!5e0!3m2!1ses!2smx!4v1234567890" width="100%" height="300" style="border:0; border-radius:15px;" allowfullscreen></iframe>
+            </div>
+            <div>
+                <h3>Calle Mina esquina con Nuevo León</h3>
+                <p>Fresnillo, Zacatecas</p>
+                <p>📞 Teléfono: <strong>4931069671</strong></p>
+                <p>⏰ Pregunta por nuestro horario</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="background: #fff0e6;">
+        <h2 class="section-title">📸 Nuestras Gorditas</h2>
+        <div class="galeria-grid">
+            <div class="galeria-item"><img src="https://images.unsplash.com/photo-1589301760014-6d6f5f8b5b5b?w=400" alt="Gordita"></div>
+            <div class="galeria-item"><img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400" alt="Gordita"></div>
+            <div class="galeria-item"><img src="https://images.unsplash.com/photo-1600628421066-f6bda6a1a9b9?w=400" alt="Gordita"></div>
+            <div class="galeria-item"><img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400" alt="Gordita"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">🍽️ Nuestros Guisos</h2>
+        <div class="menu-grid">
+            <div class="menu-item"><h3>🌶️ Chicharrón</h3><p>El clásico crujiente</p></div>
+            <div class="menu-item"><h3>🍗 Mole</h3><p>Delicioso y tradicional</p></div>
+            <div class="menu-item"><h3>🟢 Verde</h3><p>Con su toque especial</p></div>
+            <div class="menu-item"><h3>🔴 Rojo</h3><p>Picante y sabroso</p></div>
+            <div class="menu-item"><h3>🥔 Papa con chorizo</h3><p>¡Favorito de todos!</p></div>
+            <div class="menu-item"><h3>🫘 Frijoles</h3><p>Clásico y económico</p></div>
+        </div>
+        <p style="text-align: center; margin-top: 30px; font-size: 1.2rem;">✨ ¡Todas a solo <strong>$16 pesos</strong> con agüita fresca de regalo! ✨</p>
+    </div>
+
+    <div class="container" style="background: #fff0e6;">
+        <h2 class="section-title">💬 Lo que dicen nuestros clientes</h2>
+        <div class="testimonios-grid">
+            <div class="testimonio"><p>"Muy ricas y muy amables a la hora de atender 🥰"</p><h4>- Liz Alvarez</h4></div>
+            <div class="testimonio"><p>"Muy ricas y muy baratas 😍😍"</p><h4>- Angélica Medrano</h4></div>
+            <div class="testimonio"><p>"Muy ricas"</p><h4>- Lourdes Lares Castro</h4></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>🇲🇽 <strong>Gorditas Mina de Doña Caro</strong> 🇲🇽</p>
+        <p>📍 Calle Mina esquina con Nuevo León, Fresnillo, Zacatecas</p>
+        <p>📞 <a href="tel:4931069671">4931069671</a> | 📱 <a href="https://wa.me/524931069671">WhatsApp</a> | 👍 <a href="https://www.facebook.com/profile.php?id=61580942190641" target="_blank">Facebook</a></p>
+        <p style="margin-top: 20px;">¡Sabor que enamora en cada mordida! ❤️</p>
+    </footer>
+</body>
+</html>

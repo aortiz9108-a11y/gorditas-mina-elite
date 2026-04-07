@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administrador - Gorditas Doña Caro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: #0a0502; color: #fff; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .card { background: rgba(29,53,87,0.9); border-radius: 20px; padding: 25px; margin-bottom: 25px; border: 1px solid #F4A261; }
+        .card h2 { color: #FFD166; margin-bottom: 20px; }
+        input, textarea, select { padding: 12px; border-radius: 10px; border: none; background: rgba(255,255,255,0.9); font-size: 1rem; width: 100%; margin-bottom: 10px; }
+        button { background: #FF6B35; color: white; padding: 12px 25px; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; margin-right: 10px; }
+        button:hover { background: #E63946; transform: scale(1.02); }
+        .btn-danger { background: #E63946; }
+        .btn-success { background: #25D366; }
+        .menu-item { background: rgba(0,0,0,0.5); padding: 15px; border-radius: 15px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .login-box { max-width: 400px; margin: 100px auto; text-align: center; }
+        .hidden { display: none; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .precio-input { font-size: 2rem; text-align: center; width: 150px; }
+        .subir-foto { border: 2px dashed #F4A261; padding: 20px; text-align: center; border-radius: 15px; margin-top: 15px; }
+        .foto-preview { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; margin-top: 15px; }
+        .foto-preview img { width: 100%; border-radius: 10px; }
+    </style>
+</head>
+<body>
+<div class="container" id="loginBox">
+    <div class="login-box card">
+        <h2>👑 Panel de Administración</h2>
+        <input type="password" id="adminPass" placeholder="Contraseña">
+        <button onclick="verificarPassword()">Entrar</button>
+        <p style="margin-top: 15px; color: #FFD166;">🔒 Contraseña: doñacaro2026</p>
+    </div>
+</div>
+
+<div id="adminPanel" class="container hidden">
+    <h1 style="text-align: center; margin-bottom: 30px;">👑 Panel de Administrador</h1>
+    
+    <div class="grid-2">
+        <!-- GESTIÓN DE GUISOS -->
+        <div class="card">
+            <h2>🌮 Gestionar Guisos</h2>
+            <div id="listaGuisos"></div>
+            <div style="margin-top: 20px;">
+                <input type="text" id="nuevoGuiso" placeholder="Nombre del nuevo guiso">
+                <select id="nuevoIcono">
+                    <option value="fa-utensils">🍽️ Utensilios</option>
+                    <option value="fa-cow">🐄 Vaca</option>
+                    <option value="fa-drumstick-bite">🍗 Pollo</option>
+                    <option value="fa-hamburger">🍔 Hamburguesa</option>
+                    <option value="fa-leaf">🌿 Hoja</option>
+                    <option value="fa-egg">🥚 Huevo</option>
+                    <option value="fa-pepper-hot">🌶️ Chile</option>
+                    <option value="fa-bacon">🥓 Tocino</option>
+                    <option value="fa-fire">🔥 Fuego</option>
+                    <option value="fa-seedling">🌱 Semilla</option>
+                    <option value="fa-cheese">🧀 Queso</option>
+                </select>
+                <input type="text" id="nuevoEspecial" placeholder="Especial (ej: SOLO LUNES)">
+                <button onclick="agregarGuiso()">➕ Agregar Guiso</button>
+            </div>
+        </div>
+        
+        <!-- GESTIÓN DE BEBIDAS -->
+        <div class="card">
+            <h2>🥤 Gestionar Bebidas</h2>
+            <div id="listaBebidas"></div>
+            <div style="margin-top: 20px;">
+                <input type="text" id="nuevaBebida" placeholder="Nombre de la nueva bebida">
+                <select id="nuevoBebidaIcono">
+                    <option value="fa-mug-hot">☕ Café</option>
+                    <option value="fa-glass-water">💧 Agua</option>
+                    <option value="fa-cuttlefish">🐙 Pepsi</option>
+                    <option value="fa-wine-bottle">🍾 Jarrito</option>
+                    <option value="fa-glass-cheers">🥂 Seven Up</option>
+                </select>
+                <button onclick="agregarBebida()">➕ Agregar Bebida</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- CONFIGURACIÓN GENERAL -->
+    <div class="card">
+        <h2>⚙️ Configuración General</h2>
+        <div class="grid-2">
+            <div>
+                <label>💰 Precio por gordita:</label>
+                <input type="number" id="precioGlobal" class="precio-input">
+            </div>
+            <div>
+                <label>🕐 Horario Gorditas:</label>
+                <input type="text" id="horarioGorditas">
+            </div>
+            <div>
+                <label>🌽 Horario Pozole:</label>
+                <input type="text" id="horarioPozole">
+            </div>
+        </div>
+        <button onclick="guardarConfiguracion()">💾 Guardar Configuración</button>
+    </div>
+    
+    <!-- SUBIR FOTOS -->
+    <div class="card">
+        <h2>📸 Subir Fotos (Local/Menú)</h2>
+        <div class="subir-foto">
+            <p>📌 Para subir fotos del local o del menú:</p>
+            <p>1. Copia tus fotos a la carpeta: <strong>~/mandri_data/imagenes_local/</strong></p>
+            <p>2. O usa el comando: <code>cp /ruta/de/tu/foto.jpg ~/mandri_data/imagenes_local/</code></p>
+            <p>3. Las fotos aparecerán automáticamente en la página principal</p>
+        </div>
+        <button onclick="window.open('/imagenes_local/', '_blank')">📁 Ver Fotos Locales</button>
+        <button onclick="window.open('/imagenes_menu/', '_blank')">📁 Ver Fotos Menú</button>
+    </div>
+    
+    <!-- VER COMENTARIOS -->
+    <div class="card">
+        <h2>💬 Comentarios de Clientes</h2>
+        <div id="listaComentariosAdmin"></div>
+        <button onclick="cargarComentariosAdmin()">🔄 Actualizar</button>
+    </div>
+    
+    <div class="card">
+        <h2>🔗 Enlaces Rápidos</h2>
+        <button onclick="window.open('/', '_blank')">🌐 Ver Página Principal</button>
+        <button onclick="window.open('/api/comentarios', '_blank')">📋 Ver Comentarios (JSON)</button>
+        <button onclick="window.open('/api/fotos', '_blank')">📸 Ver Fotos (JSON)</button>
+        <button onclick="location.reload()">🔄 Recargar Panel</button>
+    </div>
+</div>
+
+<script>
+    const API_URL = 'http://localhost:8081';
+    const CONFIG_URL = '/menu_config.json';
+    
+    function verificarPassword() {
+        const pass = document.getElementById('adminPass').value;
+        if(pass === 'doñacaro2026') {
+            document.getElementById('loginBox').classList.add('hidden');
+            document.getElementById('adminPanel').classList.remove('hidden');
+            cargarTodo();
+        } else {
+            alert('Contraseña incorrecta');
+        }
+    }
+    
+    async function cargarTodo() {
+        await cargarGuisos();
+        await cargarBebidas();
+        await cargarConfiguracion();
+        await cargarComentariosAdmin();
+    }
+    
+    async function cargarGuisos() {
+        const res = await fetch(CONFIG_URL);
+        const config = await res.json();
+        const contenedor = document.getElementById('listaGuisos');
+        contenedor.innerHTML = '';
+        config.guisos.forEach((g, idx) => {
+            const div = document.createElement('div');
+            div.className = 'menu-item';
+            div.innerHTML = `
+                <span><i class="fas ${g.icono}"></i> <strong>${g.nombre}</strong> ${g.especial ? `<small>(${g.especial})</small>` : ''}</span>
+                <div><button class="btn-danger" onclick="eliminarGuiso(${idx})">🗑️ Eliminar</button></div>
+            `;
+            contenedor.appendChild(div);
+        });
+    }
+    
+    async function cargarBebidas() {
+        const res = await fetch(CONFIG_URL);
+        const config = await res.json();
+        const contenedor = document.getElementById('listaBebidas');
+        contenedor.innerHTML = '';
+        config.bebidas.forEach((b, idx) => {
+            const div = document.createElement('div');
+            div.className = 'menu-item';
+            div.innerHTML = `
+                <span><i class="fas ${b.icono}"></i> <strong>${b.nombre}</strong></span>
+                <div><button class="btn-danger" onclick="eliminarBebida(${idx})">🗑️ Eliminar</button></div>
+            `;
+            contenedor.appendChild(div);
+        });
+    }
+    
+    async function cargarConfiguracion() {
+        const res = await fetch(CONFIG_URL);
+        const config = await res.json();
+        document.getElementById('precioGlobal').value = config.precio;
+        document.getElementById('horarioGorditas').value = config.horario_gorditas;
+        document.getElementById('horarioPozole').value = config.horario_pozole;
+    }
+    
+    async function guardarConfiguracion() {
+        const res = await fetch(CONFIG_URL);
+        const config = await res.json();
+        config.precio = parseInt(document.getElementById('precioGlobal').value);
+        config.horario_gorditas = document.getElementById('horarioGorditas').value;
+        config.horario_pozole = document.getElementById('horarioPozole').value;
+        await fetch('/guardar_config', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(config) });
+        alert('Configuración guardada');
+        location.reload();
+    }
+    
+    async function agregarGuiso() {
+        const nombre = document.getElementById('nuevoGuiso').value;
+        const icono = document.getElementById('nuevoIcono').value;
+        const especial = document.getElementById('nuevoEspecial').value;
+        if(!nombre) { alert('Escribe un nombre'); return; }
+        const res = await fetch(CONFIG_URL);
+        const config = await res.json();
+        config.guisos.push({ nombre, icono, especial });
+        await fetch('/guardar_config', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(config) });
+        alert('Guiso agregado');
+        cargarGuisos();
+        document.getElementById('nuevoGuiso').value = '';
+        document.getElementById('nuevoEspecial').value = '';
+    }
+    
+    async function eliminarGuiso(idx) {
+        if(!confirm('¿Eliminar este guiso?')) return;
+        const res = await fetch(CONFIG_URL);
+        const config = await res.json();
+        config.guisos.splice(idx, 1);
+        await fetch('/guardar_config', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(config) });
+        cargarGuisos();
+    }
+    
+    async function agregarBebida() {
+        const nombre = document.getElementById('nuevaBebida').value;
+        const icono = document.getElementById('nuevoBebidaIcono').value;
+        if(!nombre) { alert('Escribe un nombre'); return; }
+        const res = await fetch(CONFIG_URL);
+        const config = await res.json();
+        config.bebidas.push({ nombre, icono });
+        await fetch('/guardar_config', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(config) });
+        alert('Bebida agregada');
+        cargarBebidas();
+        document.getElementById('nuevaBebida').value = '';
+    }
+    
+    async function eliminarBebida(idx) {
+        if(!confirm('¿Eliminar esta bebida?')) return;
+        const res = await fetch(CONFIG_URL);
+        const config = await res.json();
+        config.bebidas.splice(idx, 1);
+        await fetch('/guardar_config', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(config) });
+        cargarBebidas();
+    }
+    
+    async function cargarComentariosAdmin() {
+        const res = await fetch(API_URL + '/api/comentarios');
+        const comentarios = await res.json();
+        const contenedor = document.getElementById('listaComentariosAdmin');
+        contenedor.innerHTML = '';
+        comentarios.forEach(c => {
+            const div = document.createElement('div');
+            div.className = 'menu-item';
+            div.innerHTML = `<span><strong>${c.nombre}</strong> (${c.calificacion}⭐): ${c.comentario}</span>`;
+            contenedor.appendChild(div);
+        });
+    }
+</script>
+</body>
+</html>

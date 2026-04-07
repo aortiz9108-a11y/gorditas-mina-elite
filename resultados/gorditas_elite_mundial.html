@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gorditas Mina de Doña Caro - #1 en Fresnillo 🌟</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a0a00 0%, #3d1e00 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: url('https://images.unsplash.com/photo-1589301760014-6d6f5f8b5b5b?w=1600') center/cover fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+        .hero-content { position: relative; z-index: 2; animation: fadeInUp 1.5s ease-out; }
+        .hero h1 { font-size: 4.5rem; margin-bottom: 1rem; text-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.3rem; margin-bottom: 2rem; }
+        
+        .btn {
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: inline-block;
+            margin: 0 10px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .btn-whatsapp { background: #25D366; color: white; }
+        .btn-facebook { background: #1877f2; color: white; }
+        .btn-whatsapp:hover, .btn-facebook:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 20px 30px rgba(0,0,0,0.3); }
+        
+        .card-3d {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        .card-3d:hover { transform: translateY(-10px); box-shadow: 0 25px 40px rgba(0,0,0,0.3); }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+        .menu-item {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            text-align: center;
+            border-radius: 20px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .menu-item:hover { transform: translateY(-5px) scale(1.02); background: rgba(255,255,255,0.2); }
+        .menu-item h3 { color: #ff8c42; font-size: 1.3rem; margin-bottom: 10px; }
+        
+        .especial-section {
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            border-radius: 30px;
+            padding: 40px;
+            text-align: center;
+            margin: 40px;
+        }
+        
+        .rifa-section {
+            background: linear-gradient(135deg, #2d1b0e, #4a2a10);
+            border-radius: 30px;
+            padding: 40px;
+            text-align: center;
+            margin: 40px;
+            border: 2px solid #ff8c42;
+            animation: pulse 2s infinite;
+        }
+        
+        .mapa-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .comentarios-section {
+            background: linear-gradient(135deg, #2d1b0e, #4a2a10);
+            padding: 60px 20px;
+            border-radius: 30px;
+            margin: 40px;
+        }
+        .comentario-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        .comentario-card:hover { transform: translateX(10px); background: rgba(255,255,255,0.15); }
+        
+        .formulario-comentario {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .formulario-comentario input, .formulario-comentario textarea {
+            padding: 15px;
+            border-radius: 10px;
+            border: none;
+            background: rgba(255,255,255,0.9);
+            font-size: 1rem;
+        }
+        .formulario-comentario input { flex: 1; }
+        .formulario-comentario textarea { flex: 2; }
+        .btn-enviar {
+            background: #ff6b35;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-enviar:hover { transform: scale(1.05); background: #ff8c42; }
+        
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+        .galeria-item {
+            overflow: hidden;
+            border-radius: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .galeria-item:hover { transform: scale(1.03); box-shadow: 0 20px 30px rgba(0,0,0,0.3); }
+        .galeria-item img { width: 100%; height: 250px; object-fit: cover; transition: all 0.3s; }
+        .galeria-item:hover img { transform: scale(1.1); }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ff8c42;
+        }
+        
+        footer { background: #1a0a00; text-align: center; padding: 40px; margin-top: 60px; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #ff8c42; text-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        
+        .float-wpp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            z-index: 1000;
+            animation: float 3s ease-in-out infinite;
+        }
+        .float-wpp:hover { transform: scale(1.1); background: #128C7E; }
+        .float-wpp a { color: white; text-decoration: none; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .section-title { font-size: 1.8rem; }
+            .formulario-comentario { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón flotante de WhatsApp -->
+    <div class="float-wpp">
+        <a href="https://wa.me/524931069671?text=¡Hola!%20Quiero%20hacer%20un%20pedido%20de%20gorditas%20🍽️" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>🇲🇽 Gorditas Mina de Doña Caro 🇲🇽</h1>
+            <p>🏆 #1 en Fresnillo • Sabor que enamora en cada mordida 🏆</p>
+            <div>
+                <a href="https://wa.me/524931069671?text=¡Hola!%20Quiero%20hacer%20un%20pedido%20de%20gorditas%20🍽️" class="btn btn-whatsapp">📱 Ordena por WhatsApp</a>
+                <a href="https://www.facebook.com/profile.php?id=61580942190641" class="btn btn-facebook" target="_blank">👍 Síguenos en Facebook</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats de orgullo -->
+    <div class="container">
+        <div class="stats-grid">
+            <div class="card-3d"><div class="stat-number">10+</div><p>Años de experiencia</p></div>
+            <div class="card-3d"><div class="stat-number">500+</div><p>Clientes felices</p></div>
+            <div class="card-3d"><div class="stat-number">20+</div><p>Variedades de guisos</p></div>
+            <div class="card-3d"><div class="stat-number">⭐ 5.0</div><p>Calificación promedio</p></div>
+        </div>
+    </div>
+
+    <!-- Precio destacado -->
+    <div class="especial-section">
+        <h2>🔥 OFERTA ESPECIAL 🔥</h2>
+        <p style="font-size: 3rem; font-weight: bold;">$16</p>
+        <p>¡Incluye agua fresca de regalo! 🥤</p>
+        <p>Servicio a domicilio 📦 | 📞 4931069671</p>
+    </div>
+
+    <!-- Pozole y Tamales fin de semana -->
+    <div class="especial-section" style="background: linear-gradient(135deg, #8B4513, #D2691E);">
+        <h2>🌽🍲 FIN DE SEMANA ESPECIAL 🍲🌽</h2>
+        <p style="font-size: 1.5rem; font-weight: bold;">¡Pozole y Tamales!</p>
+        <p>A partir de las 4:00 PM - Sábados y Domingos</p>
+        <p>🏆 ¡El mejor pozole de la zona! 🏆</p>
+        <p>🍴 Tamales de verde, rojo, rajas y dulces</p>
+        <p>🔥 Lleva tu tupper y te damos más</p>
+    </div>
+
+    <!-- Horario -->
+    <div class="container">
+        <div class="card-3d" style="text-align: center;">
+            <h2>🕐 Horario de Atención</h2>
+            <p><strong>Lunes a Sábado:</strong> 9:00 AM - 8:00 PM</p>
+            <p><strong>Domingos:</strong> 10:00 AM - 5:00 PM</p>
+            <p><strong>Pozole y Tamales:</strong> Sábados y Domingos desde 4:00 PM</p>
+        </div>
+    </div>
+
+    <!-- Mapa de Google Maps -->
+    <div class="container">
+        <h2 class="section-title">📍 ¿Dónde estamos?</h2>
+        <div class="mapa-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.123456!2d-102.876543!3d23.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDA3JzI0LjYiTiAxMDLCsDUyJzM1LjQiVw!5e0!3m2!1ses!2smx!4v1234567890" 
+                width="100%" 
+                height="400" 
+                style="border:0; border-radius:20px;" 
+                allowfullscreen 
+                loading="lazy">
+            </iframe>
+        </div>
+        <p style="text-align: center; margin-top: 20px;"><strong>Calle Mina esquina con Nuevo León, Fresnillo, Zacatecas</strong></p>
+        <p style="text-align: center;">📞 <a href="tel:4931069671" style="color: #ff8c42;">4931069671</a></p>
+    </div>
+
+    <!-- Menú de Guisos -->
+    <div class="container">
+        <h2 class="section-title">🍽️ Nuestros Guisos</h2>
+        <div class="menu-grid">
+            <div class="menu-item"><h3>🌶️ Chicharrón</h3><p>El clásico crujiente</p></div>
+            <div class="menu-item"><h3>🍗 Mole</h3><p>Delicioso y tradicional</p></div>
+            <div class="menu-item"><h3>🟢 Verde</h3><p>Con su toque especial</p></div>
+            <div class="menu-item"><h3>🔴 Rojo</h3><p>Picante y sabroso</p></div>
+            <div class="menu-item"><h3>🥔 Papa con chorizo</h3><p>¡Favorito de todos!</p></div>
+            <div class="menu-item"><h3>🫘 Frijoles</h3><p>Clásico y económico</p></div>
+            <div class="menu-item"><h3>🧀 Queso con rajas</h3><p>Fundido y delicioso</p></div>
+            <div class="menu-item"><h3>🥩 Deshebrada</h3><p>Jugosa y sabrosa</p></div>
+            <div class="menu-item"><h3>🐖 Carnitas</h3><p>Estilo Michoacán</p></div>
+            <div class="menu-item"><h3>🌿 Nopales</h3><p>Saludables y deliciosos</p></div>
+            <div class="menu-item"><h3>🧅 Rajas con crema</h3><p>Suavecitas y cremosas</p></div>
+            <div class="menu-item"><h3>🐔 Tinga</h3><p>Pollo en salsa de jitomate</p></div>
+            <div class="menu-item"><h3>🥑 Aguacate</h3><p>Fresco y natural</p></div>
+            <div class="menu-item"><h3>🧄 Alambre</h3><p>Carne con tocino y verduras</p></div>
+            <div class="menu-item"><h3>🍖 Costilla</h3><p>En salsa roja</p></div>
+            <div class="menu-item"><h3>🐟 Pescado</h3><p>Estilo veracruzano</p></div>
+            <div class="menu-item"><h3>🌮 Cochinita</h3><p>Pibil yucateco</p></div>
+        </div>
+        <p style="text-align: center; margin-top: 30px; font-size: 1.2rem;">✨ ¡Todas a solo <strong>$16 pesos</strong> con agüita fresca de regalo! ✨</p>
+    </div>
+
+    <!-- Rifa semanal -->
+    <div class="rifa-section">
+        <h2>🎁 ¡RIFA SEMANAL! 🎁</h2>
+        <p style="font-size: 1.5rem;">🍽️ <strong>Lonche Gratis</strong> 🍽️</p>
+        <p>Cada semana sorteamos un lonche gratis entre todos los que pidan por WhatsApp</p>
+        <p>🔥 <strong>¿Cómo participar?</strong> 🔥</p>
+        <p>1️⃣ Haz tu pedido por WhatsApp</p>
+        <p>2️⃣ Incluye tu nombre completo</p>
+        <p>3️⃣ El domingo anunciamos al ganador en Facebook</p>
+        <br>
+        <a href="https://wa.me/524931069671?text=¡Hola!%20Quiero%20participar%20en%20la%20rifa%20🍽️%20Mi%20nombre%20es:%20" class="btn btn-whatsapp" style="background: #ff6b35;">🎲 Participar ahora</a>
+    </div>
+
+    <!-- Galería -->
+    <div class="container">
+        <h2 class="section-title">📸 Nuestras Gorditas</h2>
+        <div class="galeria-grid">
+            <div class="galeria-item"><img src="https://images.unsplash.com/photo-1589301760014-6d6f5f8b5b5b?w=400" alt="Gordita"></div>
+            <div class="galeria-item"><img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400" alt="Gordita"></div>
+            <div class="galeria-item"><img src="https://images.unsplash.com/photo-1600628421066-f6bda6a1a9b9?w=400" alt="Gordita"></div>
+            <div class="galeria-item"><img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400" alt="Gordita"></div>
+        </div>
+    </div>
+
+    <!-- Comentarios -->
+    <div class="comentarios-section">
+        <h2 class="section-title" style="color: white;">💬 Lo que dicen nuestros clientes</h2>
+        <div id="lista-comentarios">
+            <div class="comentario-card"><div style="color: #ffc107; font-size: 1.2rem;">⭐⭐⭐⭐⭐</div><p>"¡Las mejores gorditas de Fresnillo!"</p><h4>- María Fernández</h4></div>
+            <div class="comentario-card"><div style="color: #ffc107; font-size: 1.2rem;">⭐⭐⭐⭐⭐</div><p>"Muy ricas y muy amables 🥰"</p><h4>- Liz Alvarez</h4></div>
+            <div class="comentario-card"><div style="color: #ffc107; font-size: 1.2rem;">⭐⭐⭐⭐⭐</div><p>"El pozole del fin de semana está increíble"</p><h4>- Carlos Rivera</h4></div>
+        </div>
+        
+        <h3 style="text-align: center; margin-top: 40px;">✨ Deja tu comentario ✨</h3>
+        <div class="formulario-comentario">
+            <input type="text" id="nombre" placeholder="Tu nombre">
+            <textarea id="comentario" placeholder="Tu comentario..." rows="2"></textarea>
+            <button class="btn-enviar" onclick="agregarComentario()">Enviar</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>🇲🇽 <strong>Gorditas Mina de Doña Caro</strong> 🇲🇽</p>
+        <p>📍 Calle Mina esquina con Nuevo León, Fresnillo, Zacatecas</p>
+        <p>📞 <a href="tel:4931069671" style="color: #ff8c42;">4931069671</a> | 📱 <a href="https://wa.me/524931069671" style="color: #ff8c42;">WhatsApp</a></p>
+        <p>🕐 Lunes a Sábado 9am-8pm | Domingos 10am-5pm</p>
+        <p>🌽 Pozole y Tamales: Sábados y Domingos desde 4pm</p>
+        <p style="margin-top: 20px;">🏆 ¡El mejor sabor de Fresnillo, garantizado! 🏆</p>
+        <p style="margin-top: 10px;">❤️ ¡Sabor que enamora en cada mordida! ❤️</p>
+    </footer>
+
+    <script>
+        function agregarComentario() {
+            var nombre = document.getElementById('nombre').value;
+            var comentario = document.getElementById('comentario').value;
+            if(nombre && comentario) {
+                var contenedor = document.getElementById('lista-comentarios');
+                var nuevo = document.createElement('div');
+                nuevo.className = 'comentario-card';
+                nuevo.innerHTML = '<div style="color: #ffc107; font-size: 1.2rem;">⭐⭐⭐⭐⭐</div><p>"' + comentario + '"</p><h4>- ' + nombre + '</h4>';
+                contenedor.appendChild(nuevo);
+                document.getElementById('nombre').value = '';
+                document.getElementById('comentario').value = '';
+                alert('¡Gracias por tu comentario! Entras en la rifa semanal');
+            } else {
+                alert('Completa todos los campos');
+            }
+        }
+    </script>
+</body>
+</html>
